@@ -9,7 +9,7 @@ self.addEventListener('install', e => {
       .open('2fa-qr')
       .then(c =>
         c.addAll([
-          'https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css',
+          'https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css',
           'https://cdn.jsdelivr.net/npm/kjua@0.9.0/dist/kjua.min.js',
           'https://cdn.jsdelivr.net/gh/stefansundin/qr-detector.js@v0.0.5/dist/QrDetector.min.js',
           'https://fonts.googleapis.com/css?family=Roboto:500,400',
