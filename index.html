@@ -355,9 +355,24 @@ function decode(s) {
   return s ? decodeURIComponent(s) : "";
 }
 
+// Note: Switch to URL.canParse() in a few years when it is more widely available.
+function URLcanParse(url) {
+  try {
+    new URL(url);
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
+
 function parse_uri() {
   // update the QR code
   update_qr();
+
+  if (!URLcanParse(uri.value)) {
+    uri.classList.add("is-invalid");
+    return;
+  }
 
   // validate and parse the uri
   const url = new URL(uri.value);
