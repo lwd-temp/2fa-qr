@@ -361,8 +361,11 @@ function parse_uri() {
 
   // validate and parse the uri
   const url = new URL(uri.value);
+  // Firefox puts "//totp/" in the pathname, whereas Chrome and Safari puts "totp" in the host
+  const url_type = url.host || url.pathname.split("/")[2];
+  const url_label = url.pathname.substr(url.host ? 1 : 7);
   if (url.protocol === "otpauth:"
-   && (url.pathname.startsWith("//totp/") || url.pathname.startsWith("//hotp/"))
+   && (url_type === "totp" || url_type === "hotp")
    && url.searchParams.has("secret")
   ) {
     uri.classList.remove("is-invalid");
@@ -381,8 +384,8 @@ function parse_uri() {
   // update fields
   const c = url.searchParams.get("counter") || "";
 
-  type.value = url.pathname.substr(2, 4);
-  label.value = decode(url.pathname.substr(7));
+  type.value = url_type;
+  label.value = decode(url_label);
   secret.value = url.searchParams.get("secret");
   issuer.value = decode(url.searchParams.get("issuer"));
   counter.value = c === "0" ? "": c;
