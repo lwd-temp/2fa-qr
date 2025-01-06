@@ -735,15 +735,15 @@ open_qrdetector.addEventListener('click', async () => {
     });
   }
 
-  // Disabled because of https://bugs.chromium.org/p/chromium/issues/detail?id=1382442
-  // if (window.BarcodeDetector) {
-  //   const supportedFormats = await BarcodeDetector.getSupportedFormats();
-  //   if (supportedFormats.includes('qr_code')) {
-  //     window.QrDetector = BarcodeDetector;
-  //     qrdetector_ready();
-  //     return;
-  //   }
-  // }
+  // Use the built-in BarcodeDetector if possible, but this is not widely supported yet
+  if (window.BarcodeDetector) {
+    const supportedFormats = await BarcodeDetector.getSupportedFormats();
+    if (supportedFormats.includes('qr_code')) {
+      window.QrDetector = BarcodeDetector;
+      qrdetector_ready();
+      return;
+    }
+  }
 
   const script = document.createElement('script');
   script.src = 'https://cdn.jsdelivr.net/gh/stefansundin/qr-detector.js@v0.0.5/dist/QrDetector.min.js';
