@@ -345,8 +345,7 @@ function update_qr() {
 
   if (label.value === "" && issuer.value === "") {
     app_label.textContent = "Issuer (label)";
-  }
-  else {
+  } else {
     app_label.textContent = issuer.value === "" ? label.value : `${issuer.value} (${label.value})`;
   }
 }
@@ -384,8 +383,7 @@ function parse_uri() {
    && url.searchParams.has("secret")
   ) {
     uri.classList.remove("is-invalid");
-  }
-  else {
+  } else {
     uri.classList.add("is-invalid");
     return;
   }
