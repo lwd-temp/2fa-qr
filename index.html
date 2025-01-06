@@ -12,7 +12,7 @@
   <link rel="icon">
   <link rel="manifest" href="app.webmanifest">
   <link rel="license" href="https://www.gnu.org/licenses/gpl-3.0.html" title="GNU GPL 3.0 or later">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:500,400">
 
   <script src="https://cdn.jsdelivr.net/npm/kjua@0.9.0/dist/kjua.min.js" integrity="sha256-U9OwIwkuBJSExOOc5vUNG43RAHR5XmbaBuEUB5KpHZo=" crossorigin="anonymous"></script>
@@ -114,10 +114,10 @@ body.modal-open #qr {
             <p>Drag and drop an image, or paste an image or a base64 data URI.</p>
 
             <div class="mb-3">
-              <button class="btn btn-primary mb-2 mr-2" id="btn_file">Select file</button>
-              <button class="btn btn-primary mb-2 mr-2" id="btn_webcam">Capture from webcam</button>
-              <button class="btn btn-primary mb-2 mr-2" id="btn_screen_capture">Capture from screen</button>
-              <button class="btn btn-danger mb-2 mr-2 d-none" id="btn_stop_video">Stop</button>
+              <button class="btn btn-primary mb-2 me-2" id="btn_file">Select file</button>
+              <button class="btn btn-primary mb-2 me-2" id="btn_webcam">Capture from webcam</button>
+              <button class="btn btn-primary mb-2 me-2" id="btn_screen_capture">Capture from screen</button>
+              <button class="btn btn-danger mb-2 me-2 d-none" id="btn_stop_video">Stop</button>
             </div>
 
             <div class="text-center mb-3 d-none" id="qrdetector_video_container">
@@ -141,8 +141,8 @@ body.modal-open #qr {
           </div>
           <div class="modal-body">
             <p>Installing a service worker makes this page available offline. You can also add the page to your home screen <a href="https://caniuse.com/web-app-manifest">on certain platforms</a>.</p>
-            <button class="btn btn-primary mb-2 mr-2" id="install_service_worker" autocomplete="off" disabled>Install service worker</button>
-            <button class="btn btn-primary mb-2 mr-2" id="a2hs" autocomplete="off" disabled>Add to home screen</button>
+            <button class="btn btn-primary mb-2 me-2" id="install_service_worker" autocomplete="off" disabled>Install service worker</button>
+            <button class="btn btn-primary mb-2 me-2" id="a2hs" autocomplete="off" disabled>Add to home screen</button>
             <div class="alert alert-danger" role="alert" id="service_worker_alert">
               Service workers are not supported by your web browser.
             </div>
@@ -159,7 +159,7 @@ body.modal-open #qr {
     <hr>
 
     <p>
-      <select class="form-control" id="type" autocomplete="off">
+      <select class="form-select" id="type" autocomplete="off">
         <option value="totp">Time based (TOTP)</option>
         <option value="hotp">Counter based (HOTP)</option>
       </select>
@@ -170,21 +170,21 @@ body.modal-open #qr {
     <p><input class="form-control" type="search" id="issuer" placeholder="Issuer &mdash; Optional" list="issuers" spellcheck="false"></p>
     <p><input class="form-control d-none" type="search" id="counter" placeholder="Initial counter &mdash; Defaults to 0" pattern="\d+" autocomplete="off" spellcheck="false"></p>
 
-    <div class="custom-control custom-checkbox">
-      <p><input class="custom-control-input" type="checkbox" id="advanced_options" autocomplete="off"><label class="custom-control-label" for="advanced_options">Advanced options</label></p>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="advanced_options"><label class="form-check-label" for="advanced_options">Advanced options</label>
     </div>
 
     <div class="d-none" id="advanced_options_container">
       <p>Please note that the advanced options are not supported by the Google Authenticator app (all advanced options are ignored). Yubico Authenticator supports these advanced options.</p>
       <p>
-        <select class="form-control" id="algorithm" autocomplete="off">
+        <select class="form-select" id="algorithm" autocomplete="off">
           <option value="SHA1">SHA1 algorithm (Default)</option>
           <option value="SHA256">SHA256 algorithm</option>
           <option value="SHA512">SHA512 algorithm</option>
         </select>
       </p>
       <p>
-        <select class="form-control" id="digits" autocomplete="off">
+        <select class="form-select" id="digits" autocomplete="off">
           <option value="6">6 digits (Default)</option>
           <option value="8">8 digits</option>
         </select>
@@ -246,7 +246,7 @@ body.modal-open #qr {
       <option>Yahoo!</option>
     </datalist>
 
-    <input class="form-control-range" type="range" id="size" value="200" min="50" max="650" step="25" title="QR Code Size" autocomplete="off">
+    <input class="w-100" type="range" id="size" value="200" min="50" max="650" step="25" title="QR Code Size" autocomplete="off">
 
     <div class="p-4 text-center" id="qr"><canvas></div>
 
